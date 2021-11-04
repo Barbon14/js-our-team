@@ -44,7 +44,7 @@ for (let i = 0; i < cards.length; i++) {
     cardGen(teamCont, cards[i]);
 }
 
-// quando clicco su il bottone add aggiungo una card con le informzioni inserite
+// quando clicco sul bottone add aggiungo una card con le informzioni inserite
 const addButton = document.getElementById("addMemberButton");
 addButton.addEventListener('click',
     function () {
