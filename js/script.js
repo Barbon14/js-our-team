@@ -48,22 +48,32 @@ for (let i = 0; i < cards.length; i++) {
 const addButton = document.getElementById("addMemberButton");
 addButton.addEventListener('click',
     function () {
+        
         // - seleziono gli input che mi servono
-        let addImage = document.getElementById("image").value;
-        let addName = document.getElementById("name").value;
-        let addRole = document.getElementById("role").value;
+        let addImage = document.getElementById("image");
+        let addName = document.getElementById("name");
+        let addRole = document.getElementById("role");
+        console.log(addName.value);
 
         // creo un oggetto con le informazioni inserite nel form
         const newcard = {
-            'foto': addImage,
-            'nome': addName,
-            'ruolo': addRole
+            'foto': addImage.value,
+            'nome': addName.value,
+            'ruolo': addRole.value
         }
+
         // aggiungo l'oggetto all'array
         cards.push(newcard);
         console.log(cards);
+
         // genero la nuova card in pagina
         cardGen(teamCont, newcard);
+
+        // reset dei valori del form
+        addImage.value = '';
+        addName.value = '';
+        addRole.value = '';
+        console.log(addName.value);
     }
 )
 
