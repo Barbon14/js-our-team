@@ -5,7 +5,7 @@
 // - Utilizziamo poi gli input presenti nella pagina per permettere all’utente di aggiungere nuovi membri del team.
 
 // creo un array di oggetti con i membri attuali del team
-const card=
+const cards=
 [        
     {
         'foto': 'angela-caroll-chief-editor.jpg',
@@ -39,23 +39,30 @@ const card=
 ];
 
 // genero in pagina le card per ogni oggetto dell'array utilizando un ciclo for
-const teamCont = document.querySelector(".team-container")
-for (let i = 0; i < card.length; i++) {
+const teamCont = document.querySelector(".team-container");
+cardGen(teamCont, cards);
 
-    teamCont.innerHTML +=`
+// creo un oggetto con le informazioni date dall'utente con il form
+// aggiungo l'oggetto all'array
+
+// funzioni
+
+// generazione card
+function cardGen(container, arrayObj) {
+
+    for (let i = 0; i < arrayObj.length; i++) {
+        container.innerHTML += `
     <div class="team-card">
         <div class="card-image">
             <img
-                src="img/${card[i].foto}"
-                alt="${card[i].nome}"
+                src="img/${arrayObj[i].foto}"
+                alt="${arrayObj[i].nome}"
             >
         </div>
         <div class="card-text">
-            <h3>${card[i].nome}</h3>
-            <p>${card[i].ruolo}</p>
+            <h3>${arrayObj[i].nome}</h3>
+            <p>${arrayObj[i].ruolo}</p>
         </div>
     </div>`
-    
+    }
 }
-// creo un oggetto con le informazioni date dall'utente con il form
-// aggiungo l'oggetto all'array
