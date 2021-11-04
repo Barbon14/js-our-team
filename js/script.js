@@ -40,29 +40,48 @@ const cards=
 
 // genero in pagina le card per ogni oggetto dell'array utilizando un ciclo for
 const teamCont = document.querySelector(".team-container");
-cardGen(teamCont, cards);
+for (let i = 0; i < cards.length; i++) {
+    cardGen(teamCont, cards[i]);
+}
 
-// creo un oggetto con le informazioni date dall'utente con il form
-// aggiungo l'oggetto all'array
+// quando clicco su il bottone add aggiungo una card con le informzioni inserite
+const addButton = document.getElementById("addMemberButton");
+addButton.addEventListener('click',
+    function () {
+        // - seleziono gli input che mi servono
+        let addImage = document.getElementById("image").value;
+        let addName = document.getElementById("name").value;
+        let addRole = document.getElementById("role").value;
+
+        // creo un oggetto con le informazioni inserite nel form
+        const newcard = {
+            'foto': addImage,
+            'nome': addName,
+            'ruolo': addRole
+        }
+        // aggiungo l'oggetto all'array
+        cards.push(newcard);
+        console.log(cards);
+        // genero la nuova card in pagina
+        cardGen(teamCont, newcard);
+    }
+)
 
 // funzioni
 
 // generazione card
 function cardGen(container, arrayObj) {
-
-    for (let i = 0; i < arrayObj.length; i++) {
-        container.innerHTML += `
+    container.innerHTML += `
     <div class="team-card">
         <div class="card-image">
             <img
-                src="img/${arrayObj[i].foto}"
-                alt="${arrayObj[i].nome}"
+                src="img/${arrayObj.foto}"
+                alt="${arrayObj.nome}"
             >
         </div>
         <div class="card-text">
-            <h3>${arrayObj[i].nome}</h3>
-            <p>${arrayObj[i].ruolo}</p>
+            <h3>${arrayObj.nome}</h3>
+            <p>${arrayObj.ruolo}</p>
         </div>
-    </div>`
-    }
+    </div>`;
 }
